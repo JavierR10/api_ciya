@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 #MODELOS
-from apps.ciya.src.models.profile import profile
+from apps.public.src.models.profile import profile
 
 #serializers
-from apps.ciya.src.api.profile.serializers import ProfileSerializers
+from apps.public.src.api.profile.serializers import ProfileSerializers
 
 class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializers

@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 #MODELOS
-from apps.ciya.src.models.usuario import users
+from apps.public.src.models.usuario import users
 
 #serializers
-from apps.ciya.src.api.usuario.serializers import UsersSerializers
+from apps.public.src.api.usuario.serializers import UsersSerializers
 
 class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializers
