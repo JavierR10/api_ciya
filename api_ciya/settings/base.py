@@ -40,7 +40,7 @@ BASE_APPS = [
     'rest_framework',
 ]
 LOCAL_APPS =[
-    'apps.ciya',
+    'apps.public',
 ]
 
 THIRD_APPS = [

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.ciya.src.models.usuario import users
+from apps.public.src.models.usuario import users
 
 class UsersSerializers(serializers.ModelSerializer):
     class Meta:

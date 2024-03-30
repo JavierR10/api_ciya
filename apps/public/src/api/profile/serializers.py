@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.ciya.src.models.profile import profile
+from apps.public.src.models.profile import profile
 
 class ProfileSerializers(serializers.ModelSerializer):
     class Meta:
