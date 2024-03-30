@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from .base import BaseModel
 
 class universidad(BaseModel):
@@ -17,5 +18,9 @@ class universidad(BaseModel):
     sede_uni = models.CharField(max_length=50)
     logo_uni = models.CharField(max_length=255)
     
+    def delete(self):
+        self.deleted_at = timezone.now()  # Establecer la fecha de eliminación
+        self.save()
+
     class Meta:
         db_table = 'universidad'

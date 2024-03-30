@@ -6,5 +6,7 @@ from apps.ciya.src.models.university import universidad
 from apps.ciya.src.api.university.serializers import UniversitySerializers
 
 class UniversityViewSet(viewsets.ModelViewSet):
-    queryset = universidad.objects.all()
     serializer_class = UniversitySerializers
+
+    def get_queryset(self):
+        return universidad.objects.filter(deleted_at__isnull=True)
