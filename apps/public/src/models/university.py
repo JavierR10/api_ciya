@@ -32,4 +32,4 @@ class universidad(BaseModel):
             related_queryset.update(deleted_at=timezone.now())
 
     class Meta:
-        db_table = 'universidad'
+        db_table = 'public\".\"universidad'

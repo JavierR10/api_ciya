@@ -33,4 +33,4 @@ class users(BaseModel):
             related_queryset.update(deleted_at=timezone.now())
 
     class Meta:
-        db_table = 'users'
+        db_table = 'public\".\"usuario'

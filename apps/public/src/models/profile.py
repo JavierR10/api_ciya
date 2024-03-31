@@ -20,6 +20,6 @@ class profile(BaseModel):
             related_field_name = related_object.field.name
             related_queryset = getattr(self, related_name).all()
             related_queryset.update(deleted_at=timezone.now())
-    class Meta:
-        db_table = 'perfil'
     
+    class Meta:  
+        db_table = 'public\".\"perfil'

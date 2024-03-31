@@ -41,6 +41,7 @@ BASE_APPS = [
 ]
 LOCAL_APPS =[
     'apps.public',
+    'apps.laboratory',
 ]
 
 THIRD_APPS = [
