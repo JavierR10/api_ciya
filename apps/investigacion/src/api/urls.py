@@ -8,6 +8,7 @@ from apps.investigacion.src.api.group.views import GroupViewSet
 from apps.investigacion.src.api.equipment.views import EquipmentViewSet
 from apps.investigacion.src.api.topicBank.views import TopicBankViewSet
 from apps.investigacion.src.api.convocatory.views import ConvocatoryViewSet
+from apps.investigacion.src.api.project.views import ProjectViewSet
 
 
 router = DefaultRouter()
@@ -20,6 +21,7 @@ router.register('group', GroupViewSet, basename='group')
 router.register('equipment', EquipmentViewSet, basename='equipment')
 router.register('topicBank', TopicBankViewSet, basename='topicBank')
 router.register('convocatory', ConvocatoryViewSet, basename='convocatory')
+router.register('project', ProjectViewSet, basename='project')
 
 
 urlpatterns = router.urls
