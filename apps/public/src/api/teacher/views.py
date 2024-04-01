@@ -9,4 +9,4 @@ class TeacherViewSet(viewsets.ModelViewSet):
     serializer_class = TeacherSerializers
     
     def get_queryset(self):
-        return Teacher.objects.filter(deleted_at__isnull=True)
+        return Teacher.objects.all()

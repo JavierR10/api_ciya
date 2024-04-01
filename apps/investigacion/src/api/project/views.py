@@ -9,4 +9,4 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializers
     
     def get_queryset(self):
-        return Project.objects.filter(deleted_at__isnull=True)
+        return Project.objects.all()

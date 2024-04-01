@@ -9,4 +9,4 @@ class LaboratoryViewSet(viewsets.ModelViewSet):
     serializer_class = LaboratorySerializers
     
     def get_queryset(self):
-        return Laboratory.objects.filter(deleted_at__isnull=True)
+        return Laboratory.objects.all()

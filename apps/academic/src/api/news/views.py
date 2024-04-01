@@ -11,7 +11,7 @@ from apps.pagination import CustomPagination
 
 class NewsViewSet(viewsets.ModelViewSet):
     serializer_class = NewsSerializers
-    queryset = News.objects.filter(deleted_at__isnull=True)
+    queryset = News.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_class = NewsFilter
     pagination_class = CustomPagination

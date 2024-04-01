@@ -9,4 +9,4 @@ class FolderViewSet(viewsets.ModelViewSet):
     serializer_class = FolderSerializers
     
     def get_queryset(self):
-        return Folder.objects.filter(deleted_at__isnull=True)
+        return Folder.objects.all()

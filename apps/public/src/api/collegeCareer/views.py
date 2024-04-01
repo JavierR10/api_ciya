@@ -9,4 +9,4 @@ class CollegeCareerViewSet(viewsets.ModelViewSet):
     serializer_class = CollegeCareerSerializers
     
     def get_queryset(self):
-        return CollegeCareer.objects.filter(deleted_at__isnull=True)
+        return CollegeCareer.objects.all()

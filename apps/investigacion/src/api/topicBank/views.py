@@ -9,4 +9,4 @@ class TopicBankViewSet(viewsets.ModelViewSet):
     serializer_class = TopicBankSerializers
     
     def get_queryset(self):
-        return TopicBank.objects.filter(deleted_at__isnull=True)
+        return TopicBank.objects.all()

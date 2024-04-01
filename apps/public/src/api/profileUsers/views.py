@@ -9,4 +9,4 @@ class ProfileUsersViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileUsersSerializers
 
     def get_queryset(self):
-        return profileUsers.objects.filter(deleted_at__isnull=True)
+        return profileUsers.objects.all()

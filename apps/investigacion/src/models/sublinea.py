@@ -1,28 +1,13 @@
 from django.db import models
-from django.utils import timezone
-from .base import BaseModel
 
-class Sublinea(BaseModel):
+class Sublinea(models.Model):
     id_sub = models.AutoField(primary_key=True)
-    fk_id_car = models.IntegerField()
-    nombre_sub = models.TextField()
-    descripcion_sub =  models.TextField()
-    estado_sub = models.IntegerField()
+    fk_id_car = models.IntegerField(blank=True, null=True)
+    nombre_sub = models.TextField(blank=True, null=True)
+    descripcion_sub = models.TextField(blank=True, null=True)
+    estado_sub = models.IntegerField(blank=True, null=True)
 
-    def delete(self):
-        self.deleted_at = timezone.now()  # Establecer la fecha de eliminación
-        self.save()
-
-        
-        # Actualizar objetos relacionados
-        related_objects = self._meta.related_objects
-        for related_object in related_objects:
-            related_model = related_object.related_model
-            related_name = related_object.get_accessor_name()
-            related_field_name = related_object.field.name
-            related_queryset = getattr(self, related_name).all()
-            related_queryset.update(deleted_at=timezone.now())
-    
     class Meta:
+        managed = False
         db_table = 'investigacion\".\"sublinea'
 

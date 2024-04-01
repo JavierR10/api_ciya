@@ -9,4 +9,4 @@ class SublineaViewSet(viewsets.ModelViewSet):
     serializer_class = SublineaSerializers
     
     def get_queryset(self):
-        return Sublinea.objects.filter(deleted_at__isnull=True)
+        return Sublinea.objects.all()

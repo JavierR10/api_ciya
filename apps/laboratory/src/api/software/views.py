@@ -9,4 +9,4 @@ class SoftwareViewSet(viewsets.ModelViewSet):
     serializer_class = SoftwareSerializers
     
     def get_queryset(self):
-        return Software.objects.filter(deleted_at__isnull=True)
+        return Software.objects.all()

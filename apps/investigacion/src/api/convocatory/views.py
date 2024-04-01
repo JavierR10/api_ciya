@@ -9,4 +9,4 @@ class ConvocatoryViewSet(viewsets.ModelViewSet):
     serializer_class = ConvocatorySerializers
     
     def get_queryset(self):
-        return Convocatory.objects.filter(deleted_at__isnull=True)
+        return Convocatory.objects.all()

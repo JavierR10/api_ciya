@@ -9,4 +9,4 @@ class HoursExecutedViewSet(viewsets.ModelViewSet):
     serializer_class = HoursExecutedSerializers
     
     def get_queryset(self):
-        return HoursExecuted.objects.filter(deleted_at__isnull=True)
+        return HoursExecuted.objects.all()

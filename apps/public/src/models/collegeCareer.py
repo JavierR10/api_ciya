@@ -1,39 +1,25 @@
 from django.db import models
 from django.core.validators import EmailValidator
-from django.utils import timezone
-from .base import BaseModel
+
 from apps.public.src.models.teacher import Teacher
 
-class CollegeCareer(BaseModel):
+class CollegeCareer(models.Model):
     id_car = models.AutoField(primary_key=True)
     fk_id_fac = models.IntegerField()
-    nombre_car = models.CharField(max_length=200)
-    siglas_car = models.CharField(max_length=50)
-    fk_director_doc = models.CharField(max_length=100)
-    foto_logo_car = models.CharField(max_length=200)
-    telefono_car = models.CharField(max_length=150)
-    email_car = models.CharField(max_length=150, validators=[EmailValidator], unique=True)
-    fecha_creacion_car = models.DateTimeField(auto_now=True)
-    fecha_actualizacion_car = models.DateTimeField(auto_now=True)
-    usuario_creacion_car = models.CharField(max_length=100)
-    usuario_actualizacion_car = models.CharField(max_length=100)
-    mision_car = models.TextField()
-    vision_car = models.TextField()
-    fk_dir_doc = models.ForeignKey(Teacher, on_delete=models.RESTRICT, to_field='id_doc')
-
-    
-    def delete(self):
-        self.deleted_at = timezone.now()  # Establecer la fecha de eliminación
-        self.save()
-        
-        # Actualizar objetos relacionados
-        related_objects = self._meta.related_objects
-        for related_object in related_objects:
-            related_model = related_object.related_model
-            related_name = related_object.get_accessor_name()
-            related_field_name = related_object.field.name
-            related_queryset = getattr(self, related_name).all()
-            related_queryset.update(deleted_at=timezone.now())
+    nombre_car = models.CharField(max_length=200, blank=True, null=True)
+    siglas_car = models.CharField(max_length=50, blank=True, null=True)
+    fk_director_doc = models.CharField(max_length=100, blank=True, null=True)
+    foto_logo_car = models.CharField(max_length=200, blank=True, null=True)
+    telefono_car = models.CharField(max_length=15, blank=True, null=True)
+    email_car = models.CharField(max_length=150, blank=True, null=True, validators=[EmailValidator], unique=True)
+    fecha_creacion_car = models.DateField(blank=True, null=True)
+    fecha_actualizacion_car = models.DateField(blank=True, null=True)
+    usuario_creacion_car = models.CharField(max_length=100, blank=True, null=True)
+    usuario_actualizacion_car = models.CharField(max_length=100, blank=True, null=True)
+    mision_car = models.CharField(max_length=1000, blank=True, null=True)
+    vision_car = models.CharField(max_length=1000, blank=True, null=True)
+    fk_dir_doc = models.ForeignKey(Teacher, models.DO_NOTHING, db_column='fk_dir_doc', blank=True, null=True)
 
     class Meta:
+        managed = False
         db_table = 'public\".\"carrera'

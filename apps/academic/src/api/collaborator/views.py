@@ -9,4 +9,4 @@ class CollaboratorViewSet(viewsets.ModelViewSet):
     serializer_class = CollaboratorSerializers
     
     def get_queryset(self):
-        return Collaborator.objects.filter(deleted_at__isnull=True)
+        return Collaborator.objects.all()

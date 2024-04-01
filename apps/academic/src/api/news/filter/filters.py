@@ -1,7 +1,7 @@
+import django_filters
 from apps.academic.src.models.news import News
-from apps.academic.src.api.baseFilter.filters import BaseFilter
 
-class NewsFilter(BaseFilter):
+class NewsFilter(django_filters.FilterSet):
     class Meta:
         model = News
         fields = {

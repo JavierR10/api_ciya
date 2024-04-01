@@ -1,37 +1,22 @@
 from django.db import models
-from django.utils import timezone
-from .base import BaseModel
 from apps.investigacion.src.models.linea import Linea
 
-class TopicBank(BaseModel):
+class TopicBank(models.Model):
     id_ban = models.AutoField(primary_key=True)
-    fk_id_doc = models.IntegerField()
-    fk_id_lin = models.ForeignKey(Linea, on_delete=models.RESTRICT, to_field='id_lin')
-    fk_id_sub = models.IntegerField()
-    tema_ban = models.CharField(max_length=500)
-    descripcion_ban = models.TextField()
-    archivo_adjunto_ban = models.TextField()
-    fecha_creacion_ban = models.DateTimeField(auto_now=True)
-    fecha_actualizacion_ban = models.DateTimeField(auto_now=True)
-    usuario_creacion_ban = models.CharField(max_length=255)
-    usuario_actualizacion_ban = models.CharField(max_length=255)
-    validacion_ban = models.CharField(max_length=100)
-    estado_ban = models.CharField(max_length=50)
+    fk_id_doc = models.IntegerField(blank=True, null=True)
+    fk_id_lin = models.ForeignKey(Linea, models.DO_NOTHING, db_column='fk_id_lin', blank=True, null=True)
+    fk_id_sub = models.IntegerField(blank=True, null=True)
+    tema_ban = models.CharField(max_length=500, blank=True, null=True)
+    descripcion_ban = models.TextField(blank=True, null=True)
+    archivo_adjunto_ban = models.CharField(max_length=1500, blank=True, null=True)
+    fecha_creacion_ban = models.DateTimeField(blank=True, null=True)
+    fecha_actualizacion_ban = models.DateTimeField(blank=True, null=True)
+    usuario_creacion_ban = models.CharField(max_length=255, blank=True, null=True)
+    usuario_actualizacion_ban = models.CharField(max_length=255, blank=True, null=True)
+    validacion_ban = models.CharField(max_length=100, blank=True, null=True)
+    estado_ban = models.CharField(max_length=50, blank=True, null=True)
 
-    def delete(self):
-        self.deleted_at = timezone.now()  # Establecer la fecha de eliminación
-        self.save()
-
-        
-        # Actualizar objetos relacionados
-        related_objects = self._meta.related_objects
-        for related_object in related_objects:
-            related_model = related_object.related_model
-            related_name = related_object.get_accessor_name()
-            related_field_name = related_object.field.name
-            related_queryset = getattr(self, related_name).all()
-            related_queryset.update(deleted_at=timezone.now())
-    
     class Meta:
+        managed = False
         db_table = 'investigacion\".\"banco_temas'
 

@@ -9,4 +9,4 @@ class UsersViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializers
     
     def get_queryset(self):
-        return users.objects.filter(deleted_at__isnull=True)
+        return users.objects.all()

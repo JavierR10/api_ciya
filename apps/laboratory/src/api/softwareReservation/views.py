@@ -9,4 +9,4 @@ class SoftwareReservationViewSet(viewsets.ModelViewSet):
     serializer_class = SoftwareReservationSerializers
     
     def get_queryset(self):
-        return SoftwareReservation.objects.filter(deleted_at__isnull=True)
+        return SoftwareReservation.objects.all()

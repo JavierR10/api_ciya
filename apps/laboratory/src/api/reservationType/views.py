@@ -9,4 +9,4 @@ class ReservationTypeViewSet(viewsets.ModelViewSet):
     serializer_class = ReservationTypeSerializers
     
     def get_queryset(self):
-        return ReservationType.objects.filter(deleted_at__isnull=True)
+        return ReservationType.objects.all()

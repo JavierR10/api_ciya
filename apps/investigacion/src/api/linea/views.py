@@ -9,4 +9,4 @@ class LineaViewSet(viewsets.ModelViewSet):
     serializer_class = LineaSerializers
     
     def get_queryset(self):
-        return Linea.objects.filter(deleted_at__isnull=True)
+        return Linea.objects.all()

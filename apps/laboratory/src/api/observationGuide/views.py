@@ -9,4 +9,4 @@ class ObservationGuideViewSet(viewsets.ModelViewSet):
     serializer_class = ObservationGuideSerializers
     
     def get_queryset(self):
-        return ObservationGuide.objects.filter(deleted_at__isnull=True)
+        return ObservationGuide.objects.all()

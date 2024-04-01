@@ -9,4 +9,4 @@ class PracticalGuideViewSet(viewsets.ModelViewSet):
     serializer_class = PracticalGuideSerializers
     
     def get_queryset(self):
-        return PracticalGuide.objects.filter(deleted_at__isnull=True)
+        return PracticalGuide.objects.all()

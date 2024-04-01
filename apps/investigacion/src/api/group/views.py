@@ -9,4 +9,4 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializers
     
     def get_queryset(self):
-        return Group.objects.filter(deleted_at__isnull=True)
+        return Group.objects.all()

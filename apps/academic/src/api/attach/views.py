@@ -9,4 +9,4 @@ class AttachViewSet(viewsets.ModelViewSet):
     serializer_class = AttachSerializers
     
     def get_queryset(self):
-        return Attach.objects.filter(deleted_at__isnull=True)
+        return Attach.objects.all()

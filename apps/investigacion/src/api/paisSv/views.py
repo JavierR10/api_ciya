@@ -9,4 +9,4 @@ class PaisSvViewSet(viewsets.ModelViewSet):
     serializer_class = PaisSvSerializers
     
     def get_queryset(self):
-        return PaisSv.objects.filter(deleted_at__isnull=True)
+        return PaisSv.objects.all()

@@ -9,4 +9,4 @@ class AssociatedDocumentViewSet(viewsets.ModelViewSet):
     serializer_class = AssociatedDocumentSerializers
     
     def get_queryset(self):
-        return AssociatedDocument.objects.filter(deleted_at__isnull=True)
+        return AssociatedDocument.objects.all()

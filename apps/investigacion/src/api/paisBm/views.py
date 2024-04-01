@@ -9,4 +9,4 @@ class PaisBmViewSet(viewsets.ModelViewSet):
     serializer_class = PaisBmSerializers
     
     def get_queryset(self):
-        return PaisBm.objects.filter(deleted_at__isnull=True)
+        return PaisBm.objects.all()

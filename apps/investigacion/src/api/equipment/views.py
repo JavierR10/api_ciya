@@ -9,4 +9,4 @@ class EquipmentViewSet(viewsets.ModelViewSet):
     serializer_class = EquipmentSerializers
     
     def get_queryset(self):
-        return Equipment.objects.filter(deleted_at__isnull=True)
+        return Equipment.objects.all()
