@@ -43,10 +43,14 @@ LOCAL_APPS =[
     'apps.public',
     'apps.laboratory',
     'apps.investigacion',
+    'apps.academic',
+
 ]
 
 THIRD_APPS = [
     'psycopg',
+    'corsheaders',
+    'django_filters',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -58,8 +62,29 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',  # Cambia esto al origen de tu aplicación Vue.js
+    'http://127.0.0.1:5173'
+]
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'apps.pagination.CustomPagination',
+    'PAGE_SIZE': 10,
+    'PAGE_SIZE_QUERY_PARAM': 'page_size',
+    'MAX_PAGE_SIZE': 1000,
+}
 ROOT_URLCONF = 'api_ciya.urls'
 
 TEMPLATES = [
@@ -102,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 

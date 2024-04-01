@@ -19,7 +19,7 @@ DATABASES = {
         'HOST': '0.0.0.0', # IP DE DOCKER -- localhost
         'PORT': '5422', #PUERTO DE DOCKER -- 5433
         'OPTIONS': {
-            'options': '-c search_path=public,laboratorios,investigacion'
+            'options': '-c search_path=public,laboratorios,investigacion,academico'
         },
     }
 }
