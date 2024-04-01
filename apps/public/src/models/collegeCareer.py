@@ -21,5 +21,4 @@ class CollegeCareer(models.Model):
     fk_dir_doc = models.ForeignKey(Teacher, models.DO_NOTHING, db_column='fk_dir_doc', blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'public\".\"carrera'

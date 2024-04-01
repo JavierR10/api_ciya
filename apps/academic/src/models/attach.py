@@ -8,6 +8,5 @@ class Attach(models.Model):
     fecha_subida_adj = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'academico\".\"adjunto'
 

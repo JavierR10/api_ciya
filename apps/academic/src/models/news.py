@@ -10,6 +10,5 @@ class News(models.Model):
     fecha_creacion_not = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'academico\".\"noticia'
 

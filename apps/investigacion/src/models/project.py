@@ -13,6 +13,5 @@ class Project(models.Model):
     fk_id_lin = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'investigacion\".\"proyecto'
 

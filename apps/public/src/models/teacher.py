@@ -27,5 +27,4 @@ class Teacher(models.Model):
     sexo_doc = models.CharField(max_length=15, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'public\".\"docente'

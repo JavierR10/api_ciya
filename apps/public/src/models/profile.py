@@ -7,5 +7,4 @@ class profile(models.Model):
     descripcion_prf = models.CharField(max_length=500, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'public\".\"perfil'

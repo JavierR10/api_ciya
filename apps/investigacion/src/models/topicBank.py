@@ -17,6 +17,5 @@ class TopicBank(models.Model):
     estado_ban = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'investigacion\".\"banco_temas'
 

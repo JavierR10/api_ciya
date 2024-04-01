@@ -12,6 +12,5 @@ class LaboratoryCareer(models.Model):
     usuario_actualizacion_labcar = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"laboratorio_carrera'
 

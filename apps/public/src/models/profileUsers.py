@@ -9,6 +9,5 @@ class profileUsers(models.Model):
     fk_id_usu = models.ForeignKey(users, models.DO_NOTHING, db_column='fk_id_usu', blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'public\".\"perfil_usuario'
 

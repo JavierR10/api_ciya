@@ -6,6 +6,5 @@ class AssociatedDocument(models.Model):
     fk_id_doc_asociado = models.IntegerField(blank=True, null=True)
     
     class Meta:
-        managed = False
         db_table = 'academico\".\"documento_asociado'
 

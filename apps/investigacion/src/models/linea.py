@@ -7,6 +7,5 @@ class Linea(models.Model):
     nombre_lin = models.CharField(max_length=500, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'investigacion\".\"linea'
 

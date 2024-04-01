@@ -128,14 +128,7 @@ class ConvenioCarrera(models.Model):
         db_table = 'convenio_carrera'
 
 
-class Convocatoria(models.Model):
-    id_conv = models.AutoField(primary_key=True)
-    documento_conv = models.CharField(max_length=500, blank=True, null=True)
-    estado_conv = models.CharField(max_length=500, blank=True, null=True)
 
-    class Meta:
-
-        db_table = 'convocatoria'
 
 
 class Cronogramavin(models.Model):
@@ -202,62 +195,16 @@ class Distributivo(models.Model):
         db_table = 'distributivo'
 
 
-class Docente(models.Model):
-    id_doc = models.AutoField(primary_key=True)
-    cedula_doc = models.CharField(max_length=15, blank=True, null=True)
-    primer_apellido_doc = models.CharField(max_length=100, blank=True, null=True)
-    segundo_apellido_doc = models.CharField(max_length=100, blank=True, null=True)
-    nombre_doc = models.CharField(max_length=150, blank=True, null=True)
-    abreviatura_titulo_doc = models.CharField(max_length=150, blank=True, null=True)
-    fotografia_doc = models.CharField(max_length=255, blank=True, null=True)
-    perfil_profesional_doc = models.TextField(blank=True, null=True)
-    telefono_doc = models.CharField(max_length=15, blank=True, null=True)
-    email_doc = models.CharField(max_length=150, blank=True, null=True)
-    oficina_doc = models.CharField(max_length=250, blank=True, null=True)
-    facebook_doc = models.CharField(max_length=500, blank=True, null=True)
-    twitter_doc = models.CharField(max_length=500, blank=True, null=True)
-    pagina_web_doc = models.CharField(max_length=500, blank=True, null=True)
-    fk_id_car = models.IntegerField(blank=True, null=True)
-    fecha_creacion_doc = models.DateField(blank=True, null=True)
-    fecha_actualizacion_doc = models.DateField(blank=True, null=True)
-    usuario_creacion_doc = models.CharField(max_length=100, blank=True, null=True)
-    usuario_actualizacion_doc = models.CharField(max_length=100, blank=True, null=True)
-    fk_id_usu = models.IntegerField(blank=True, null=True)
-    linkedin_doc = models.CharField(max_length=150, blank=True, null=True)
-    sexo_doc = models.CharField(max_length=15, blank=True, null=True)
+class DjangoMigrations(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
 
     class Meta:
 
-        db_table = 'docente'
+        db_table = 'django_migrations'
 
-
-class Documento(models.Model):
-    id_doc = models.AutoField(primary_key=True)
-    fk_id_carp = models.IntegerField(blank=True, null=True)
-    nombre_doc = models.CharField(max_length=100, blank=True, null=True)
-    documento_doc = models.CharField(max_length=100, blank=True, null=True)
-    descripcion_doc = models.CharField(max_length=200, blank=True, null=True)
-    fecha_entrega_doc = models.DateField(blank=True, null=True)
-    fecha_creacion_doc = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_doc = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_doc = models.CharField(max_length=255, blank=True, null=True)
-    usuario_actualizacion_doc = models.CharField(max_length=255, blank=True, null=True)
-    fk_id_usu = models.IntegerField(blank=True, null=True)
-    publico_doc = models.CharField(max_length=10, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'documento'
-
-
-class DocumentoAsociado(models.Model):
-    id_aso = models.AutoField(primary_key=True)
-    fk_id_doc = models.IntegerField(blank=True, null=True)
-    fk_id_doc_asociado = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'documento_asociado'
 
 
 class Documentovin(models.Model):
@@ -302,16 +249,6 @@ class Empresa(models.Model):
     class Meta:
 
         db_table = 'empresa'
-
-
-class Equipo(models.Model):
-    id_equ = models.AutoField(primary_key=True)
-    fk_id_doc = models.IntegerField(blank=True, null=True)
-    fk_id_gru = models.ForeignKey('Grupo', models.DO_NOTHING, db_column='fk_id_gru', blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'equipo'
 
 
 class Estudiantes(models.Model):
@@ -363,16 +300,6 @@ class Facultad(models.Model):
         db_table = 'facultad'
 
 
-class Grupo(models.Model):
-    id_gru = models.AutoField(primary_key=True)
-    nombre_gru = models.CharField(max_length=200, blank=True, null=True)
-    tipo_gru = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'grupo'
-
-
 class Grupovin(models.Model):
     id_grupo = models.AutoField(primary_key=True)
     nombre_grupo = models.CharField(max_length=250)
@@ -392,50 +319,6 @@ class Grupovin(models.Model):
         db_table = 'grupovin'
 
 
-class Guiapractica(models.Model):
-    id_guia = models.AutoField(primary_key=True)
-    numero_practica_guia = models.CharField(max_length=255, blank=True, null=True)
-    tema_guia = models.CharField(max_length=255, blank=True, null=True)
-    fecha_inicial_guia = models.DateField(blank=True, null=True)
-    fecha_final_guia = models.DateField(blank=True, null=True)
-    archivo_guia = models.CharField(max_length=255, blank=True, null=True)
-    fk_id_doc = models.BigIntegerField(blank=True, null=True)
-    objetivo_guia = models.TextField(blank=True, null=True)
-    instrucciones_guia = models.TextField(blank=True, null=True)
-    resultados_esperados_guia = models.TextField(blank=True, null=True)
-    bibliografia_guia = models.TextField(blank=True, null=True)
-    fk_id_lab = models.BigIntegerField(blank=True, null=True)
-    fecha_creacion_guia = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_guia = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_guia = models.CharField(max_length=255, blank=True, null=True)
-    usuario_actualizacion_guia = models.CharField(max_length=255, blank=True, null=True)
-    fk_id_per = models.BigIntegerField(blank=True, null=True)
-    fk_id_cur = models.BigIntegerField(blank=True, null=True)
-    fk_id_mat = models.BigIntegerField(blank=True, null=True)
-    fk_id_malla = models.BigIntegerField(blank=True, null=True)
-    area_guia = models.TextField(blank=True, null=True)
-    medidas_guia = models.TextField(blank=True, null=True)
-    instrumentos_guia = models.TextField(blank=True, null=True)
-    trabajopreparatorio_guia = models.TextField(blank=True, null=True)
-    actividades_guia = models.TextField(blank=True, null=True)
-    informacion_guia = models.TextField(blank=True, null=True)
-    fk_laboratorista_aprobado = models.BigIntegerField(blank=True, null=True)
-    fk_director_aprobado = models.BigIntegerField(blank=True, null=True)
-    fecha_laboratorista_aprobado = models.DateTimeField(blank=True, null=True)
-    fecha_director_aprobado = models.DateTimeField(blank=True, null=True)
-    hora_guia = models.IntegerField(blank=True, null=True)
-    fk_id_lin = models.IntegerField(blank=True, null=True)
-    fk_id_sub = models.IntegerField(blank=True, null=True)
-    fk_id_coordinador_id_doc = models.CharField(max_length=250, blank=True, null=True)
-    fk_id_car = models.IntegerField(blank=True, null=True)
-    paralelo_guia = models.CharField(max_length=5, blank=True, null=True)
-    metodologia_guia = models.TextField(blank=True, null=True)
-    estado_guia_practica = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'guiapractica'
-
 
 class HorarioIndividual(models.Model):
     id_horaindi = models.AutoField(primary_key=True)
@@ -452,18 +335,6 @@ class HorarioIndividual(models.Model):
         db_table = 'horario_individual'
 
 
-class HorasEjecutadas(models.Model):
-    id_horeje = models.AutoField(primary_key=True)
-    fk_id_res = models.ForeignKey('Reserva', models.DO_NOTHING, db_column='fk_id_res', blank=True, null=True)
-    inicio_horeje = models.TimeField(blank=True, null=True)
-    fecha_creacion_res = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_res = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'horas_ejecutadas'
-
-
 class Integrantevin(models.Model):
     id_inte = models.AutoField(primary_key=True)
     estado_inte = models.CharField(max_length=15)
@@ -478,74 +349,6 @@ class Integrantevin(models.Model):
 
         db_table = 'integrantevin'
 
-
-class Laboratorio(models.Model):
-    id_lab = models.AutoField(primary_key=True)
-    nombre_lab = models.CharField(max_length=255, blank=True, null=True)
-    descripcion_lab = models.CharField(max_length=1000, blank=True, null=True)
-    fotografia1_lab = models.CharField(max_length=255, blank=True, null=True)
-    fotografia2_lab = models.CharField(max_length=255, blank=True, null=True)
-    fk_docente_responsable_lab = models.IntegerField(blank=True, null=True)
-    fk_administrativo_responsable_lab = models.IntegerField(blank=True, null=True)
-    fecha_creacion_lab = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_lab = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_lab = models.CharField(max_length=255, blank=True, null=True)
-    usuario_actualizacion_lab = models.CharField(max_length=255, blank=True, null=True)
-    tipo_lab = models.CharField(max_length=255, blank=True, null=True)
-    ubicacion_lab = models.CharField(max_length=300, blank=True, null=True)
-    color_lab = models.CharField(max_length=15, blank=True, null=True)
-    fk_administrativo_responsable_secundario_lab = models.IntegerField(blank=True, null=True)
-    siglas_lab = models.CharField(max_length=15, blank=True, null=True)
-    paralelo_guia = models.CharField(max_length=5, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'laboratorio'
-
-
-class LaboratorioArea(models.Model):
-    id_labarea = models.AutoField(primary_key=True)
-    fk_id_area = models.IntegerField(blank=True, null=True)
-    fk_id_lab = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'laboratorio_area'
-
-
-class LaboratorioCarrera(models.Model):
-    id_labcar = models.AutoField(primary_key=True)
-    fk_id_lab = models.IntegerField(blank=True, null=True)
-    fk_id_car = models.IntegerField(blank=True, null=True)
-    fecha_creacion_labcar = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_labcar = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_labcar = models.CharField(max_length=255, blank=True, null=True)
-    usuario_actualizacion_labcar = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'laboratorio_carrera'
-
-
-class LaboratorioSoftware(models.Model):
-    id_labsof = models.AutoField(primary_key=True)
-    fk_id_lab = models.ForeignKey(Laboratorio, models.DO_NOTHING, db_column='fk_id_lab', blank=True, null=True)
-    fk_id_sof = models.ForeignKey('Software', models.DO_NOTHING, db_column='fk_id_sof', blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'laboratorio_software'
-
-
-class Linea(models.Model):
-    id_lin = models.AutoField(primary_key=True)
-    descripcion_lin = models.CharField(max_length=255, blank=True, null=True)
-    estado_lin = models.IntegerField(blank=True, null=True)
-    nombre_lin = models.CharField(max_length=500, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'linea'
 
 
 class MallaAcademica(models.Model):
@@ -611,72 +414,6 @@ class Modulos(models.Model):
     class Meta:
 
         db_table = 'modulos'
-
-
-class Noticia(models.Model):
-    id_not = models.AutoField(primary_key=True)
-    titulo_not = models.CharField(max_length=100, blank=True, null=True)
-    descripcion_not = models.TextField(blank=True, null=True)
-    imagen_not = models.CharField(max_length=100, blank=True, null=True)
-    estado_not = models.CharField(max_length=20, blank=True, null=True)
-    fecha_creacion_not = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'noticia'
-
-
-class ObservacionGuia(models.Model):
-    id_observacion = models.AutoField(primary_key=True)
-    fecha_observacion = models.DateTimeField(blank=True, null=True)
-    detalle_observacion = models.TextField(blank=True, null=True)
-    fk_id_guia = models.ForeignKey(Guiapractica, models.DO_NOTHING, db_column='fk_id_guia', blank=True, null=True)
-    fk_id_doc = models.IntegerField(blank=True, null=True)
-    estado_observaciones_guia_practica = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'observacion_guia'
-
-
-class PaisBm(models.Model):
-    id_bm = models.AutoField(primary_key=True)
-    nombre_bm = models.CharField(max_length=100, blank=True, null=True)
-    continente_bm = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'pais_bm'
-
-
-class PaisSv(models.Model):
-    id_sv = models.AutoField(primary_key=True)
-    nombre_sv = models.CharField(max_length=100, blank=True, null=True)
-    continente_sv = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'pais_sv'
-
-
-class Perfil(models.Model):
-    id_prf = models.AutoField(primary_key=True)
-    nombre_prf = models.CharField(max_length=150, blank=True, null=True)
-    descripcion_prf = models.CharField(max_length=500, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'perfil'
-
-
-class PerfilUsuario(models.Model):
-    id_perusu = models.AutoField(primary_key=True)
-    fk_id_per = models.ForeignKey(Perfil, models.DO_NOTHING, db_column='fk_id_per', blank=True, null=True)
-    fk_id_usu = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='fk_id_usu', blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'perfil_usuario'
 
 
 class Periodo(models.Model):
@@ -766,22 +503,6 @@ class Programavin(models.Model):
         db_table = 'programavin'
 
 
-class Proyecto(models.Model):
-    id_pro = models.AutoField(primary_key=True)
-    nombre_pro = models.CharField(max_length=1000, blank=True, null=True)
-    fk_id_car = models.IntegerField(blank=True, null=True)
-    fk_id_doc = models.IntegerField(blank=True, null=True)
-    grupo_investigacion_pro = models.CharField(max_length=1000, blank=True, null=True)
-    programa_pro = models.CharField(max_length=1000, blank=True, null=True)
-    fk_id_tip = models.ForeignKey('TipoProyecto', models.DO_NOTHING, db_column='fk_id_tip', blank=True, null=True)
-    fecha_aprobacion_pro = models.DateField(blank=True, null=True)
-    fk_id_lin = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'proyecto'
-
-
 class Proyectovin(models.Model):
     id_proy = models.AutoField(primary_key=True)
     nombre_proy = models.CharField(max_length=250)
@@ -814,45 +535,6 @@ class RepresentantesEstudiantiles(models.Model):
 
         db_table = 'representantes_estudiantiles'
 
-
-class Reserva(models.Model):
-    id_res = models.AutoField(primary_key=True)
-    fk_id_tipres = models.IntegerField(blank=True, null=True)
-    fk_id_doc = models.IntegerField(blank=True, null=True)
-    fk_id_lab = models.IntegerField(blank=True, null=True)
-    fk_id_area = models.IntegerField(blank=True, null=True)
-    fk_id_guia = models.IntegerField(blank=True, null=True)
-    tema_res = models.TextField(blank=True, null=True)
-    comentario_res = models.TextField(blank=True, null=True)
-    estado_res = models.CharField(max_length=100, blank=True, null=True)
-    fecha_hora_res = models.DateTimeField(blank=True, null=True)
-    duracion_res = models.IntegerField(blank=True, null=True)
-    numero_participantes_res = models.IntegerField(blank=True, null=True)
-    descripcion_participantes_res = models.TextField(blank=True, null=True)
-    materiales_res = models.TextField(blank=True, null=True)
-    fecha_creacion_res = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_res = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_res = models.CharField(max_length=255, blank=True, null=True)
-    usuario_actualizacion_res = models.CharField(max_length=255, blank=True, null=True)
-    fecha_hora_fin_res = models.DateTimeField(blank=True, null=True)
-    observaciones_finales_res = models.TextField(blank=True, null=True)
-    asistencia_res = models.CharField(max_length=50, blank=True, null=True)
-    guia_adjunta_res = models.CharField(max_length=500, blank=True, null=True)
-    curso_res = models.CharField(max_length=150, blank=True, null=True)
-    materia_res = models.CharField(max_length=150, blank=True, null=True)
-    fk_id_car = models.IntegerField(blank=True, null=True)
-    paralelo_res = models.CharField(max_length=150, blank=True, null=True)
-    tipo_texto_res = models.CharField(max_length=150, blank=True, null=True)
-    fk_id_usu = models.IntegerField(blank=True, null=True)
-    software_res = models.CharField(max_length=250, blank=True, null=True)
-    tipo_res = models.CharField(max_length=20, blank=True, null=True)
-    pedidodocente_res = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'reserva'
-
-
 class Seguridad(models.Model):
     id_seg = models.AutoField(primary_key=True)
     fk_id_mod = models.ForeignKey(Modulos, models.DO_NOTHING, db_column='fk_id_mod', blank=True, null=True)
@@ -862,51 +544,6 @@ class Seguridad(models.Model):
     class Meta:
 
         db_table = 'seguridad'
-
-
-class Software(models.Model):
-    id_sof = models.AutoField(primary_key=True)
-    nombre_sof = models.CharField(max_length=100, blank=True, null=True)
-    tipolicencia_sof = models.CharField(max_length=100, blank=True, null=True)
-    cantidad_sof = models.CharField(max_length=100, blank=True, null=True)
-    unidad_sof = models.CharField(max_length=50, blank=True, null=True)
-    costounitario_sof = models.CharField(max_length=50, blank=True, null=True)
-    costototal_sof = models.CharField(max_length=50, blank=True, null=True)
-    aplicaciones_sof = models.CharField(max_length=1000, blank=True, null=True)
-    caracteristicas_sof = models.CharField(max_length=1000, blank=True, null=True)
-    fecha_creacion_sof = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_sof = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_sof = models.CharField(blank=True, null=True)
-    usuario_actualizacion_sof = models.CharField(blank=True, null=True)
-    imagen_sof = models.CharField(max_length=500, blank=True, null=True)
-    fecha_caducidad_sof = models.CharField(max_length=500, blank=True, null=True)
-    enlace_sof = models.CharField(max_length=500, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'software'
-
-
-class SoftwareReserva(models.Model):
-    id_sofres = models.AutoField(primary_key=True)
-    fk_id_sof = models.ForeignKey(Software, models.DO_NOTHING, db_column='fk_id_sof', blank=True, null=True)
-    fk_id_res = models.ForeignKey(Reserva, models.DO_NOTHING, db_column='fk_id_res', blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'software_reserva'
-
-
-class Sublinea(models.Model):
-    id_sub = models.AutoField(primary_key=True)
-    fk_id_car = models.IntegerField(blank=True, null=True)
-    nombre_sub = models.TextField(blank=True, null=True)
-    descripcion_sub = models.TextField(blank=True, null=True)
-    estado_sub = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'sublinea'
 
 
 class Tipo(models.Model):
@@ -924,27 +561,6 @@ class Tipo(models.Model):
         db_table = 'tipo'
 
 
-class TipoProyecto(models.Model):
-    id_tip = models.AutoField(primary_key=True)
-    nombre_tip = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'tipo_proyecto'
-
-
-class TipoReserva(models.Model):
-    id_tipres = models.AutoField(primary_key=True)
-    nombre_tipres = models.CharField(max_length=100, blank=True, null=True)
-    estado_tipres = models.CharField(max_length=50, blank=True, null=True)
-    fecha_creacion_tipres = models.DateTimeField(blank=True, null=True)
-    fecha_actualizacion_tipres = models.DateTimeField(blank=True, null=True)
-    usuario_creacion_tipres = models.CharField(max_length=255, blank=True, null=True)
-    usuario_actualizacion_tipres = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'tipo_reserva'
 
 
 class Tipovin(models.Model):
@@ -981,38 +597,3 @@ class Tutorvin(models.Model):
         db_table = 'tutorvin'
 
 
-class Universidad(models.Model):
-    id_uni = models.AutoField(primary_key=True)
-    nombre_uni = models.CharField(max_length=50, blank=True, null=True)
-    direccion_uni = models.CharField(max_length=100, blank=True, null=True)
-    ruc_uni = models.CharField(max_length=15, blank=True, null=True)
-    telefono_uni = models.CharField(max_length=15, blank=True, null=True)
-    mision_uni = models.CharField(max_length=500, blank=True, null=True)
-    vision_uni = models.CharField(max_length=500, blank=True, null=True)
-    email_uni = models.CharField(max_length=30, blank=True, null=True)
-    facebook_uni = models.CharField(max_length=40, blank=True, null=True)
-    twitter_uni = models.CharField(max_length=40, blank=True, null=True)
-    instagram_uni = models.CharField(max_length=40, blank=True, null=True)
-    pagina_web_uni = models.CharField(max_length=30, blank=True, null=True)
-    sede_uni = models.CharField(max_length=50, blank=True, null=True)
-    logo_uni = models.CharField(max_length=255, blank=True, null=True)
-    fecha_creacion_car = models.DateField(blank=True, null=True)
-    fecha_actualizacion_car = models.DateField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'universidad'
-
-
-class Usuario(models.Model):
-    id_usu = models.AutoField(primary_key=True)
-    correo_usu = models.CharField(max_length=50, blank=True, null=True)
-    password_usu = models.CharField(max_length=250, blank=True, null=True)
-    nombre_usu = models.CharField(max_length=50, blank=True, null=True)
-    apellido_usu = models.CharField(max_length=30, blank=True, null=True)
-    fk_id_prf = models.ForeignKey(Perfil, models.DO_NOTHING, db_column='fk_id_prf', blank=True, null=True)
-    estado_usu = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-
-        db_table = 'usuario'

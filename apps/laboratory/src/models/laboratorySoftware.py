@@ -10,6 +10,5 @@ class LaboratorySoftware(models.Model):
     fk_id_sof = models.ForeignKey(Software, models.DO_NOTHING, db_column='fk_id_sof', blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"laboratorio_software'
 

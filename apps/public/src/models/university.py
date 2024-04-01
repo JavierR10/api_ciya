@@ -20,5 +20,4 @@ class universidad(models.Model):
     fecha_actualizacion_car = models.DateField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'public\".\"universidad'

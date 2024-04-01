@@ -5,6 +5,5 @@ class Convocatory(models.Model):
     documento_conv = models.CharField(max_length=500, blank=True, null=True)
     estado_conv = models.CharField(max_length=500, blank=True, null=True)
     class Meta:
-        managed = False
         db_table = 'investigacion\".\"convocatoria'
 

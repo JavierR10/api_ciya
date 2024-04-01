@@ -5,6 +5,5 @@ class PaisBm(models.Model):
     continente_bm = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'investigacion\".\"pais_bm'
 

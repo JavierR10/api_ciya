@@ -18,5 +18,4 @@ class users(models.Model):
             self.password_usu = make_password(self.password_usu)
         super(users, self).save(*args, **kwargs)
     class Meta:
-        managed = False
         db_table = 'public\".\"usuario'

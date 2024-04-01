@@ -11,6 +11,5 @@ class ObservationGuide(models.Model):
     estado_observaciones_guia_practica = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"observacion_guia'
 

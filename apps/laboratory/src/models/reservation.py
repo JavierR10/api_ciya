@@ -35,6 +35,5 @@ class Reservation(models.Model):
     pedidodocente_res = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"reserva'
 

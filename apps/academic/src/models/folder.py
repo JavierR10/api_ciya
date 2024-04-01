@@ -14,6 +14,5 @@ class Folder(models.Model):
     fecha_actualizacion_carp = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'academico\".\"carpeta'
 

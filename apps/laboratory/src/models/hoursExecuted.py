@@ -10,6 +10,5 @@ class HoursExecuted(models.Model):
     fecha_actualizacion_res = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"horas_ejecutadas'
 

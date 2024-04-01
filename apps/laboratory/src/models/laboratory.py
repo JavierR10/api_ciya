@@ -21,6 +21,5 @@ class Laboratory(models.Model):
     paralelo_guia = models.CharField(max_length=5, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"laboratorio'
 

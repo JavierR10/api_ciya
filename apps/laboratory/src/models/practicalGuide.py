@@ -41,6 +41,5 @@ class PracticalGuide(models.Model):
     estado_guia_practica = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"guiapractica'
 

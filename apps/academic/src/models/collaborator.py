@@ -10,6 +10,5 @@ class Collaborator(models.Model):
 
     
     class Meta:
-        managed = False
         db_table = 'academico\".\"colaborador'
 

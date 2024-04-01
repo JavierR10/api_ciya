@@ -10,6 +10,5 @@ class SoftwareReservation(models.Model):
     fk_id_res = models.ForeignKey(Reservation, models.DO_NOTHING, db_column='fk_id_res', blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'laboratorios\".\"software_reserva'
 

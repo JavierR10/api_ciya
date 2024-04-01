@@ -8,6 +8,5 @@ class Sublinea(models.Model):
     estado_sub = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'investigacion\".\"sublinea'
 
