@@ -44,7 +44,8 @@ LOCAL_APPS =[
     'apps.laboratory',
     'apps.investigacion',
     'apps.academic',
-
+    'apps.security',    
+    'apps.bonding',
 ]
 
 THIRD_APPS = [

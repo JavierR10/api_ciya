@@ -1,4 +1,9 @@
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+#paginado
+from apps.pagination import CustomPagination
+from apps.laboratory.src.api.globalFilter.filter.filters import NewsFilterHoursExecuted
+
 #MODELOS
 from apps.laboratory.src.models.hoursExecuted import HoursExecuted
 
@@ -7,6 +12,7 @@ from apps.laboratory.src.api.hoursExecuted.serializers import HoursExecutedSeria
 
 class HoursExecutedViewSet(viewsets.ModelViewSet):
     serializer_class = HoursExecutedSerializers
-    
-    def get_queryset(self):
-        return HoursExecuted.objects.all()
+    queryset = HoursExecuted.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = NewsFilterHoursExecuted
+    pagination_class = CustomPagination

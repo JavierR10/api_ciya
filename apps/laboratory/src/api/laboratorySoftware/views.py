@@ -1,4 +1,8 @@
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+#paginado
+from apps.pagination import CustomPagination
+from apps.laboratory.src.api.globalFilter.filter.filters import NewsFilterLaboratorySoftware
 #MODELOS
 from apps.laboratory.src.models.laboratorySoftware import LaboratorySoftware
 
@@ -7,6 +11,7 @@ from apps.laboratory.src.api.laboratorySoftware.serializers import LaboratorySof
 
 class LaboratorySoftwareViewSet(viewsets.ModelViewSet):
     serializer_class = LaboratorySoftwareSerializers
-    
-    def get_queryset(self):
-        return LaboratorySoftware.objects.all()
+    queryset = LaboratorySoftware.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = NewsFilterLaboratorySoftware
+    pagination_class = CustomPagination

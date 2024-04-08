@@ -1,4 +1,8 @@
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+#paginado
+from apps.pagination import CustomPagination
+from apps.investigacion.src.api.globalFilter.filter.filters import NewsFilterProjectType
 #MODELOS
 from apps.investigacion.src.models.projectType import ProjectType
 
@@ -8,5 +12,8 @@ from apps.investigacion.src.api.projectType.serializers import ProjectTypeSerial
 class ProjectTypeViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectTypeSerializers
     
-    def get_queryset(self):
-        return ProjectType.objects.all()
+    queryset = ProjectType.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = NewsFilterProjectType
+    pagination_class = CustomPagination
+

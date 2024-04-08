@@ -1,4 +1,8 @@
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+#paginado
+from apps.pagination import CustomPagination
+from apps.laboratory.src.api.globalFilter.filter.filters import NewsFilterSoftwareReservation
 #MODELOS
 from apps.laboratory.src.models.softwareReservation import SoftwareReservation
 
@@ -7,6 +11,7 @@ from apps.laboratory.src.api.softwareReservation.serializers import SoftwareRese
 
 class SoftwareReservationViewSet(viewsets.ModelViewSet):
     serializer_class = SoftwareReservationSerializers
-    
-    def get_queryset(self):
-        return SoftwareReservation.objects.all()
+    queryset = SoftwareReservation.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = NewsFilterSoftwareReservation
+    pagination_class = CustomPagination
