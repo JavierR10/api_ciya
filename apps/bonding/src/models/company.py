@@ -1,6 +1,7 @@
 from django.db import models
 
 class Company(models.Model):
+    id_emp = models.AutoField(primary_key=True)
     ruc_emp = models.CharField(max_length=15, blank=True, null=True)
     nombre_emp = models.CharField(max_length=500, blank=True, null=True)
     provincia_emp = models.CharField(max_length=100, blank=True, null=True)

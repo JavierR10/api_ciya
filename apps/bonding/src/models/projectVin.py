@@ -1,7 +1,7 @@
 from django.db import models
 from apps.bonding.src.models.programVin import ProgramVin
 
-class Projectvin(models.Model):
+class ProjectVin(models.Model):
     id_proy = models.AutoField(primary_key=True)
     nombre_proy = models.CharField(max_length=250)
     descripcion_proy = models.TextField()
