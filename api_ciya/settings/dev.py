@@ -13,7 +13,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ciyadatabase',
+        'NAME': 'ciya_respal',
         'USER': 'postgres',
         'PASSWORD': 'ads450nb',
         'HOST': '0.0.0.0', # IP DE DOCKER -- localhost
