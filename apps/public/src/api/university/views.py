@@ -9,4 +9,4 @@ class UniversityViewSet(viewsets.ModelViewSet):
     serializer_class = UniversitySerializers
 
     def get_queryset(self):
-        return universidad.objects.filter(deleted_at__isnull=True)
+        return universidad.objects.all()

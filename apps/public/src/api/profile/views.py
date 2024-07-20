@@ -9,4 +9,4 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializers
     
     def get_queryset(self):
-        return profile.objects.filter(deleted_at__isnull=True)
+        return profile.objects.all()
