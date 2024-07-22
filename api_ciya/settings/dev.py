@@ -13,11 +13,11 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ciya_respal',
+        'NAME': 'ciyadatabase',
         'USER': 'postgres',
-        'PASSWORD': 'ads450nb',
-        'HOST': '0.0.0.0', # IP DE DOCKER -- localhost
-        'PORT': '5422', #PUERTO DE DOCKER -- 5433
+        'PASSWORD': 'xpango2011',
+        'HOST': 'ciyadbaws.cakcdqyqgv2b.us-east-1.rds.amazonaws.com', # IP DE DOCKER -- localhost
+        'PORT': '5432', #PUERTO DE DOCKER -- 5433
         'OPTIONS': {
             'options': '-c search_path=public,laboratorios,investigacion,academico,seguridades,vinculacion'
         },

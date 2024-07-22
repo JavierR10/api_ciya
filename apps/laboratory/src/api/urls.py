@@ -1,3 +1,5 @@
+# apps/laboratory/src/api/urls.py
+from django.urls import path
 from rest_framework.routers import DefaultRouter
 from apps.laboratory.src.api.reservationType.views import ReservationTypeViewSet
 from apps.laboratory.src.api.software.views import SoftwareViewSet
@@ -11,6 +13,7 @@ from apps.laboratory.src.api.areaLaboratory.views import AreaLaboratoryViewSet
 from apps.laboratory.src.api.laboratoryCareer.views import LaboratoryCareerViewSet
 from apps.laboratory.src.api.observationGuide.views import ObservationGuideViewSet
 from apps.laboratory.src.api.softwareReservation.views import SoftwareReservationViewSet
+from apps.laboratory.src.api.predictionLab.views import predictLabView
 
 router = DefaultRouter()
 router.register('reservationType', ReservationTypeViewSet, basename='reservationType')
@@ -26,4 +29,7 @@ router.register('laboratoryCareer', LaboratoryCareerViewSet, basename='laborator
 router.register('observationGuide', ObservationGuideViewSet, basename='observationGuide')
 router.register('softwareReservation', SoftwareReservationViewSet, basename='softwareReservation')
 
-urlpatterns = router.urls
+# Agregar la ruta predictLabView directamente
+urlpatterns = router.urls + [
+    path('predictionLab/', predictLabView, name='predictionLab'),
+]
